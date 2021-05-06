@@ -55,7 +55,6 @@ Cypress.Commands.add('randomClickElemFromList', (element) => {
 
 Cypress.Commands.add('ignoreUncaughtException', (element) => {
     Cypress.on('uncaught:exception', (err, runnable) => {
-        // returning false here prevents Cypress from failing the test
         return false
     })
 })

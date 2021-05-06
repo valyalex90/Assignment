@@ -44,7 +44,9 @@ describe('Cellebrite Website Search', () => {
         cy.url().should('contain',searched_text)
         cy.get('.scl-h2').should('contain','engineer')
         cy.randomClickElemFromList('.scl-item')
-        cy.get('.nrc-aside-title').should('be.visible')
+        // cy.get('.nrc-aside-title').should('be.visible')
+        cy.go('back')
+        cy.url().should('contain', searched_text)
 
     })
 
