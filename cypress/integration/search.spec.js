@@ -23,7 +23,7 @@ describe('Cellebrite Website Search', () => {
         cy.get('.scl-h2').should('contain','engineer')
 
     })
-
+    
     it('Should search for a specific word and click the first search result', function () {
         cy.get('#h_search').click({force: true})
         cy.get('#h_search_input').type(searched_text)
@@ -50,7 +50,6 @@ describe('Cellebrite Website Search', () => {
 
     })
 
-    
     it('Should search a random number', function () {
         cy.get('#h_search').click({force: true})
         cy.get('#h_search_input').type(number)

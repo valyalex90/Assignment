@@ -23,6 +23,8 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// command for GET command
 Cypress.Commands.add('requestURL', (endpoint, method) => {
     cy.request({
         method: method,
@@ -36,6 +38,7 @@ Cypress.Commands.add('requestURL', (endpoint, method) => {
     })
   });
 
+// command for sending a POST message
 Cypress.Commands.add('postMsg', (idvalue, messageValue) => {
     cy.request({
         method: 'POST',
@@ -46,12 +49,14 @@ Cypress.Commands.add('postMsg', (idvalue, messageValue) => {
     })
 })
 
+// random click from a list of elements; elements represents an element from list
 Cypress.Commands.add('randomClickElemFromList', (element) => {
     cy.get(element).its('length').then(elementCount => {
       let selected = Cypress._.random(elementCount - 1);
       cy.get(element,{timeout:10000}).eq(selected).click();
     })
   })
+
 
 Cypress.Commands.add('ignoreUncaughtException', (element) => {
     Cypress.on('uncaught:exception', (err, runnable) => {
