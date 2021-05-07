@@ -1,15 +1,15 @@
 describe('API Call', () => {
 
-it('Should check APIs responses', function () {
+it('Should GET messages and users & POST messages', function () {
 
     // GET messages and assert response body
-    cy.requestURL('messages', 'GET')
+    cy.requestURL('messages', 'GET', 200)
 
     // GET users and assert response body
-    cy.requestURL('users', 'GET')
+    cy.requestURL('users', 'GET', 200)
 
     // POST a new id with a message body
-    cy.postMsg('555/','mesaj/')
+    cy.postMsg('555/','mesaj/', 201)
     
 
     // assert last element from response body, in order to see if the POST message worked correctly
@@ -25,8 +25,5 @@ it('Should check APIs responses', function () {
     //     });
     //     })
 
-
-    // DELETE messages 
-    cy.requestURL('clear', 'DELETE')
 });
 })

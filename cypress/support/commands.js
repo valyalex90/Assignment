@@ -25,13 +25,13 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 // command for GET command
-Cypress.Commands.add('requestURL', (endpoint, method) => {
+Cypress.Commands.add('requestURL', (endpoint, method, status) => {
     cy.request({
         method: method,
         url: 'https://pacific-taiga-76065.herokuapp.com/'+endpoint,
         headers: {'x-authentication-token': 'very-secrete-token'} 
     }).then( (response) => {
-        cy.wrap(response).its('status').as('responseStatusCode');
+        cy.wrap(response).its('status').as('responseStatusCode').should('eq', status);
         cy.wrap(response).its('headers').as('responseHeaders');
         cy.wrap(response).its('body').as('responseBody');
         cy.wrap(response).its('duration').as('responseDuration');
@@ -39,13 +39,13 @@ Cypress.Commands.add('requestURL', (endpoint, method) => {
   });
 
 // command for sending a POST message
-Cypress.Commands.add('postMsg', (idvalue, messageValue) => {
+Cypress.Commands.add('postMsg', (idvalue, messageValue, statusss) => {
     cy.request({
         method: 'POST',
         url: 'https://pacific-taiga-76065.herokuapp.com/messages/'+idvalue+messageValue,
         headers: {'x-authentication-token': 'very-secrete-token'} 
     }).then ((response) => {
-        cy.wrap(response).its('status').as('responseStatusCode');   
+        cy.wrap(response).its('status').as('responseStatusCode').should('eq', statusss);  
     })
 })
 
